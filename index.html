@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>anon</title>
+<meta name="description" content="The onchain privacy world. Trade any pump.fun coin from a fresh wallet trackers can't link to yours. Trade unknown.">
+<meta name="theme-color" content="#040405">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/fav-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/img/fav-64.png">
+<link rel="apple-touch-icon" href="/img/fav-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="anon">
+<meta property="og:description" content="The onchain privacy world. Trade unknown.">
+<meta property="og:image" content="/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="anon">
+<meta name="twitter:image" content="/img/og.jpg">
+<link rel="preload" href="/fonts/id-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/id-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/anon.css?v=1">
+<script src="/vendor/nacl-fast.min.js"></script>
+</head>
+<body class="booting">
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div id="intro" aria-hidden="true">
+  <div class="scanline"></div>
+  <div class="intro-mark"><span class="im" id="introMark">anon</span></div>
+  <button class="skip" id="skip" type="button">skip</button>
+</div>
+
+<nav id="nav" class="hide">
+  <a class="nl" href="#top" aria-label="anon">anon</a>
+  <div class="links"><a href="#watched">The meta</a><a href="#how">How it works</a><a href="#see">What they see</a><a href="#app">Trade</a><a href="#limits">Limits</a></div>
+  <div class="nr"><button class="btn ghost sm" id="walletBtn" type="button"><i class="dot"></i><span id="walletLabel">Connect</span></button></div>
+</nav>
+
+<main>
+  <section id="top" class="hero" data-shot="hero">
+    <div class="hero-in">
+      <h1 class="mark" aria-label="anon"><span>a</span><span>n</span><span>o</span><span>n</span></h1>
+      <p class="tag rv"><span>The onchain privacy world.</span> <b>Trade unknown.</b></p>
+      <div class="ctas rv"><a class="btn primary" href="#app">Trade unknown</a><a class="btn ghost" href="#how">How it works</a></div>
+    </div>
+    <div class="cue" aria-hidden="true"><i></i></div>
+  </section>
+
+  <section id="watched" class="band tall" data-shot="watched">
+    <div class="pin">
+      <div class="wrap two">
+        <div>
+          <p class="eyebrow">01 — The meta</p>
+          <h2>Every wallet is watched.</h2>
+          <p class="body">Right now a coin about a KOL only runs if the KOL's wallet buys it. The whole timeline is a wallet prediction market, and every buy you make is on the board: labelled, followed, copied, front-run.</p>
+          <p class="body dim">This is the live pump.fun tape. Scroll, and watch it go unknown.</p>
+        </div>
+        <div class="feed" id="feed">
+          <div class="feed-h"><span class="live"><i></i>pump.fun, live</span><span id="feedState">connecting…</span></div>
+          <div class="rows" id="rows"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scan" class="band tall" data-shot="scan">
+    <div class="pin">
+      <div class="wrap">
+        <p class="eyebrow">02 — Go unknown</p>
+        <p class="scrub" id="scrub">Trackers will see a fresh wallet. No history. No label. No link back to you. Just one word: unknown.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="hz" data-shot="steps">
+    <div class="pin">
+      <div class="hz-head wrap"><p class="eyebrow">03 — How it works</p><h2>Four moves. None of them lead back to you.</h2></div>
+      <div class="track" id="track">
+        <article class="card"><div class="viz v1" aria-hidden="true"><svg viewBox="0 0 220 120"><circle class="ring" cx="110" cy="60" r="34"/><circle class="ring r2" cx="110" cy="60" r="46"/><path class="key" d="M96 60h28m-6-8 8 8-8 8"/></svg></div><b class="n">01</b><h3>A wallet born here</h3><p>anon makes a fresh keypair in your browser. It has never touched your main wallet, and its key never leaves this page.</p></article>
+        <article class="card"><div class="viz v2" aria-hidden="true"><svg viewBox="0 0 220 120"><circle class="node a" cx="30" cy="60" r="12"/><circle class="node m" cx="110" cy="60" r="16"/><circle class="node b" cx="190" cy="60" r="12"/><path class="flow f1" d="M44 60h50"/><path class="flow f2" d="M128 60h48"/><path class="cut" d="M100 36l20 48"/></svg></div><b class="n">02</b><h3>Route SOL in</h3><p>Your main wallet pays a one-time deposit address on NEAR Intents. A solver pays your anon wallet from its own funds. On chain, the trail stops there.</p></article>
+        <article class="card"><div class="viz v3" aria-hidden="true"><svg viewBox="0 0 220 120"><rect class="chip" x="62" y="30" width="96" height="60" rx="12"/><path class="spark" d="M20 92 60 70 90 80 130 44 170 52 200 26"/></svg></div><b class="n">03</b><h3>Trade any coin</h3><p>Buy and sell any pump.fun coin from the anon wallet, on the curve or on PumpSwap. The anon wallet signs here; nothing else can.</p></article>
+        <article class="card"><div class="viz v4" aria-hidden="true"><svg viewBox="0 0 220 120"><circle class="node b" cx="30" cy="60" r="12"/><circle class="node m" cx="110" cy="60" r="16"/><circle class="node a" cx="190" cy="60" r="12"/><path class="flow f1" d="M44 60h50"/><path class="flow f2" d="M128 60h48"/><path class="cut" d="M100 36l20 48"/></svg></div><b class="n">04</b><h3>Route out</h3><p>Done? The anon wallet pays another route and your SOL lands back in your main wallet, from a solver's wallet, not from anon.</p></article>
+      </div>
+      <div class="hz-bar"><i id="hzBar"></i></div>
+    </div>
+  </section>
+
+  <section id="see" class="band" data-shot="steps">
+    <div class="wrap">
+      <div class="sec-h rv"><p class="eyebrow">04 — What they see</p><h2>Same trade. Two different stories.</h2></div>
+      <div class="versus rv">
+        <div class="vs you"><span class="who">your main wallet</span><b class="addr" id="vsAddr">7xKX…your</b><ul><li><i></i>tagged on every tracker</li><li><i></i>every buy and sell on one timeline</li><li><i></i>copy-traders follow it in real time</li><li><i></i>one glance and they know it's you</li></ul></div>
+        <div class="vs anon"><span class="who">your anon wallet</span><b class="addr">unknown</b><ul><li><i></i>no label, no history</li><li><i></i>funded by a solver thousands of people use</li><li><i></i>nothing to copy, nothing to follow</li><li><i></i>nothing on chain leads back to you</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="app" class="band app" data-shot="app">
+    <div class="wrap">
+      <div class="sec-h rv"><p class="eyebrow">05 — Trade unknown</p><h2>Your anon desk.</h2></div>
+      <div class="desk rv">
+        <div class="panel" id="pMain">
+          <div class="ph"><b>1</b><span>Main wallet</span></div>
+          <div class="pb" id="mainBox"><p class="hint">Your main wallet only ever pays a route's deposit address. It never trades and never touches an anon wallet.</p><button class="btn primary wide" id="connect2" type="button">Connect wallet</button></div>
+        </div>
+        <div class="panel" id="pAnon">
+          <div class="ph"><b>2</b><span>Anon wallets</span><button class="mini" id="newW" type="button">+ new</button></div>
+          <div class="pb"><div id="wList" class="wlist"></div>
+            <div class="row2"><button class="mini" id="backupW" type="button">back up</button><button class="mini" id="importW" type="button">import</button></div></div>
+        </div>
+        <div class="panel" id="pRoute">
+          <div class="ph"><b>3</b><span>Route SOL</span><div class="seg" id="dir"><button type="button" data-d="in" class="on">in</button><button type="button" data-d="out">out</button></div></div>
+          <div class="pb">
+            <label class="field"><span id="rLbl">From your main wallet</span><span class="inrow"><input id="rAmt" inputmode="decimal" placeholder="0.10"><em>SOL</em></span></label>
+            <div class="quote" id="rQuote"></div>
+            <button class="btn primary wide" id="rGo" type="button">Get a route</button>
+            <div class="status" id="rStatus"></div>
+          </div>
+        </div>
+        <div class="panel wide2" id="pTrade">
+          <div class="ph"><b>4</b><span>Trade from the anon wallet</span><div class="seg" id="side"><button type="button" data-s="buy" class="on">buy</button><button type="button" data-s="sell">sell</button></div></div>
+          <div class="pb">
+            <label class="field"><span>Coin</span><span class="inrow"><input id="mint" placeholder="Paste a pump.fun coin address" spellcheck="false"></span></label>
+            <div class="coin" id="coinBox"></div>
+            <div class="chips" id="trend"></div>
+            <label class="field"><span id="tLbl">Amount</span><span class="inrow"><input id="tAmt" inputmode="decimal" placeholder="0.05"><em id="tUnit">SOL</em></span></label>
+            <button class="btn primary wide" id="tGo" type="button">Buy unknown</button>
+            <div class="status" id="tStatus"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="limits" class="band" data-shot="app">
+    <div class="wrap two">
+      <div class="rv"><p class="eyebrow">06 — What anon can't do</p><h2>Unknown isn't invisible.</h2></div>
+      <ul class="risks rv">
+        <li><b>The route sees both ends.</b> NEAR Intents' operator and the solver see the deposit and the payout. Nobody on chain links them; they could.</li>
+        <li><b>Timing and amounts can match.</b> Route a round 1 SOL and buy a second later, and a patient watcher can guess. Odd amounts and a little waiting help.</li>
+        <li><b>Your browser holds the keys.</b> Anon wallets live in this browser. Back them up. Clear your site data without a backup and they're gone.</li>
+        <li><b>Fresh wallets get flagged.</b> Trackers mark new wallets as fresh. They can see that someone bought. They can't see who.</li>
+        <li><b>Memecoins are memecoins.</b> A coin can go to zero whoever buys it.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="end" class="end" data-shot="end">
+    <div class="end-in rv">
+      <h2 class="endmark">anon</h2>
+      <p class="tag"><span>The onchain privacy world.</span> <b>Trade unknown.</b></p>
+      <a class="btn primary" href="#app">Trade unknown</a>
+      <div id="caBox" class="ca" hidden></div>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="wModal" hidden><div class="mbox" role="dialog" aria-modal="true" aria-labelledby="wTitle"><button class="x" id="wClose" type="button" aria-label="Close">✕</button><h3 id="wTitle">Connect your main wallet</h3><div id="wPick"></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="/js/anon.js?v=1"></script>
+</body>
+</html>
